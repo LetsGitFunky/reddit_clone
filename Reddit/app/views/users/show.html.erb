@@ -1,3 +1,11 @@
-<h1>Welcome to <%= @user.username %></h1>
+<h1>Welcome <%= @user.username %></h1>
 
+<% @user.subs.each do |sub| %>
+    <li>
 
+        <a href="<%= sub_url(sub) %>">
+            <%= sub.title %>
+        </a>
+
+    </li>
+<% end %>
