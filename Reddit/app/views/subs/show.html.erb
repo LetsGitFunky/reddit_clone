@@ -1,2 +1,12 @@
-<h1>Subs#show</h1>
-<p>Find me in app/views/subs/show.html.erb</p>
+<h1><%=User.find_by(id: @sub.user_id).username%>'s Sub</h1>
+    <label>Title:
+        <%= @sub.title%>
+    </label>
+    <br>
+    <label>Description:
+        <%= @sub.description%>
+    </label>
+    <br>
+    <label>Moderator:
+        <%=User.find_by(id: @sub.user_id).username%>
+    </label>

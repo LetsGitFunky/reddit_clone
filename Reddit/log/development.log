@@ -396,3 +396,543 @@ FOREIGN KEY ("user_id")
   [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2023-05-11 11:40:23 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+
+ActiveRecord::PendingMigrationError - Migrations are pending. To resolve this issue, run:
+        bin/rails db:migrate RAILS_ENV=development
+You have 1 pending migration:
+20230511175719_create_subs.rb:
+
+Started POST "/__better_errors/3f332c0b1e83f459/variables" for ::1 at 2023-05-11 11:40:23 -0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8057437283407492260)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateSubs (20230511175719)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE TABLE "subs" ("id" bigserial primary key, "title" character varying, "description" text, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_67f5376a4c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_subs_on_user_id" ON "subs" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230511175719"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(8057437283407492260)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2023-05-11 11:41:12 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/kennyngo/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/kennyngo/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 11.1ms | Allocations: 526)
+Completed 200 OK in 19ms (Views: 15.2ms | ActiveRecord: 0.0ms | Allocations: 2811)
+
+
+Started GET "/subs" for ::1 at 2023-05-11 11:41:22 -0700
+
+SyntaxError - syntax error, unexpected local variable or method, expecting `end'
+...ction :require_logged_in except:[:show,:index]
+...                         ^~~~~~:
+  app/controllers/subs_controller.rb:2:in `'
+
+Started POST "/__better_errors/0716cb7d59222fc6/variables" for ::1 at 2023-05-11 11:41:22 -0700
+Started GET "/subs" for ::1 at 2023-05-11 11:41:43 -0700
+Processing by SubsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering subs/index.html.erb within layouts/application
+  Rendered subs/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 110)
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 3682)
+Completed 200 OK in 17ms (Views: 10.3ms | ActiveRecord: 0.0ms | Allocations: 6453)
+
+
+Started GET "/subs/1" for ::1 at 2023-05-11 11:41:56 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (1.1ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:46:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (Duration: 4.6ms | Allocations: 3471)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 3565)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 2.5ms | Allocations: 8094)
+
+
+
+NoMethodError - undefined method `title' for nil:NilClass:
+  app/views/subs/show.html.erb:3
+  app/controllers/subs_controller.rb:47:in `show'
+
+Started POST "/__better_errors/fb570c3fc2663adc/variables" for ::1 at 2023-05-11 11:41:56 -0700
+Started GET "/users" for ::1 at 2023-05-11 11:42:13 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/user" for ::1 at 2023-05-11 11:42:16 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/user"):
+  
+Started GET "/session/new" for ::1 at 2023-05-11 11:42:19 -0700
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 615)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 1766)
+Completed 200 OK in 25ms (Views: 8.8ms | ActiveRecord: 4.3ms | Allocations: 7736)
+
+
+Started GET "/user/new" for ::1 at 2023-05-11 11:42:25 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/user/new"):
+  
+Started GET "/users/new" for ::1 at 2023-05-11 11:42:30 -0700
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 587)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | Allocations: 1729)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.0ms | Allocations: 2413)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/subs/1" for ::1 at 2023-05-11 11:47:50 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.3ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:47:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (Duration: 1.9ms | Allocations: 2541)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 2629)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 1.6ms | Allocations: 6068)
+
+
+
+NoMethodError - undefined method `title' for nil:NilClass:
+  app/views/subs/show.html.erb:3
+  app/controllers/subs_controller.rb:48:in `show'
+
+Started POST "/__better_errors/0345e4008b8d13e2/variables" for ::1 at 2023-05-11 11:47:51 -0700
+Started GET "/subs/1" for ::1 at 2023-05-11 11:47:54 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.2ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:47:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (Duration: 2.0ms | Allocations: 2591)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 2670)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.2ms | Allocations: 3417)
+
+
+
+NoMethodError - undefined method `title' for nil:NilClass:
+  app/views/subs/show.html.erb:3
+  app/controllers/subs_controller.rb:48:in `show'
+
+Started POST "/__better_errors/e1f160d303405000/variables" for ::1 at 2023-05-11 11:47:54 -0700
+Started GET "/" for ::1 at 2023-05-11 11:48:20 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/kennyngo/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/kennyngo/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.3ms | Allocations: 526)
+Completed 200 OK in 19ms (Views: 15.7ms | ActiveRecord: 0.0ms | Allocations: 2811)
+
+
+Started GET "/subs/1" for ::1 at 2023-05-11 11:48:23 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.6ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:47:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (Duration: 4.5ms | Allocations: 3480)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 3580)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 2.0ms | Allocations: 10555)
+
+
+
+NoMethodError - undefined method `title' for nil:NilClass:
+  app/views/subs/show.html.erb:3
+  app/controllers/subs_controller.rb:48:in `show'
+
+Started POST "/__better_errors/88dc6f9ff2be7e64/variables" for ::1 at 2023-05-11 11:48:23 -0700
+Started GET "/" for ::1 at 2023-05-11 11:49:07 -0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/kennyngo/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/kennyngo/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.5ms | Allocations: 278)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 919)
+
+
+Started GET "/subs/1" for ::1 at 2023-05-11 11:49:09 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.3ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:47:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (Duration: 2.8ms | Allocations: 2744)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 2833)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.3ms | Allocations: 4028)
+
+
+
+NoMethodError - undefined method `title' for nil:NilClass:
+  app/views/subs/show.html.erb:2
+  app/controllers/subs_controller.rb:48:in `show'
+
+Started POST "/__better_errors/6592e796512527d4/variables" for ::1 at 2023-05-11 11:49:09 -0700
+Started POST "/__better_errors/6592e796512527d4/variables" for ::1 at 2023-05-11 11:51:07 -0700
+Started GET "/" for ::1 at 2023-05-11 11:51:26 -0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/kennyngo/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/kennyngo/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.8ms | Allocations: 282)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms | Allocations: 922)
+
+
+Started GET "/subs/1" for ::1 at 2023-05-11 11:51:30 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.2ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:47:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (Duration: 2.2ms | Allocations: 2667)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | Allocations: 2755)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.6ms | Allocations: 6419)
+
+
+
+NoMethodError - undefined method `title' for nil:NilClass:
+  app/views/subs/show.html.erb:2
+  app/controllers/subs_controller.rb:48:in `show'
+
+Started POST "/__better_errors/aea8ac6330ef81b8/variables" for ::1 at 2023-05-11 11:51:30 -0700
+Started GET "/subs/1" for ::1 at 2023-05-11 11:51:40 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.4ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:47:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 105)
+  Rendered layout layouts/application.html.erb (Duration: 10.6ms | Allocations: 3632)
+Completed 200 OK in 15ms (Views: 13.1ms | ActiveRecord: 0.4ms | Allocations: 4908)
+
+
+Started GET "/subs/1" for ::1 at 2023-05-11 11:52:08 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.2ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:47:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (Duration: 7.1ms | Allocations: 2668)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | Allocations: 2757)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.9ms | Allocations: 6475)
+
+
+
+NoMethodError - undefined method `title' for nil:NilClass:
+  app/views/subs/show.html.erb:2
+  app/controllers/subs_controller.rb:48:in `show'
+
+Started POST "/__better_errors/cf92765543cf6d3d/variables" for ::1 at 2023-05-11 11:52:09 -0700
+Started GET "/subs/1" for ::1 at 2023-05-11 11:52:10 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.3ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:47:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (Duration: 1.6ms | Allocations: 2591)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 2670)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.3ms | Allocations: 3417)
+
+
+
+NoMethodError - undefined method `title' for nil:NilClass:
+  app/views/subs/show.html.erb:2
+  app/controllers/subs_controller.rb:48:in `show'
+
+Started POST "/__better_errors/efbab0330361155a/variables" for ::1 at 2023-05-11 11:52:10 -0700
+Started POST "/__better_errors/efbab0330361155a/eval" for ::1 at 2023-05-11 11:52:11 -0700
+Started POST "/__better_errors/efbab0330361155a/eval" for ::1 at 2023-05-11 11:52:11 -0700
+Started POST "/__better_errors/efbab0330361155a/eval" for ::1 at 2023-05-11 11:52:11 -0700
+Started POST "/__better_errors/efbab0330361155a/variables" for ::1 at 2023-05-11 11:52:13 -0700
+Started GET "/subs/1" for ::1 at 2023-05-11 11:52:35 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.1ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."user_id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:47:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 2619)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | Allocations: 2707)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.8ms | Allocations: 5453)
+
+
+
+NoMethodError - undefined method `title' for nil:NilClass:
+  app/views/subs/show.html.erb:2
+  app/controllers/subs_controller.rb:48:in `show'
+
+Started POST "/__better_errors/b9a4e8cd1a947c11/variables" for ::1 at 2023-05-11 11:52:36 -0700
+Started GET "/" for ::1 at 2023-05-11 11:52:39 -0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/kennyngo/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/kennyngo/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.2ms | Allocations: 281)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.0ms | Allocations: 843)
+
+
+Started GET "/subs/1" for ::1 at 2023-05-11 11:52:42 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.2ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."user_id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:47:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (Duration: 1.3ms | Allocations: 2612)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 2691)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.2ms | Allocations: 3647)
+
+
+
+NoMethodError - undefined method `title' for nil:NilClass:
+  app/views/subs/show.html.erb:2
+  app/controllers/subs_controller.rb:48:in `show'
+
+Started POST "/__better_errors/f98b47a845a7d93e/variables" for ::1 at 2023-05-11 11:52:42 -0700
+  [1m[36mSub Load (0.5ms)[0m  [1m[34mSELECT "subs".* FROM "subs"[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/subs/1" for ::1 at 2023-05-11 11:54:29 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.2ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:47:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (Duration: 2.1ms | Allocations: 2541)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | Allocations: 2629)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 1.2ms | Allocations: 6056)
+
+
+
+NoMethodError - undefined method `title' for nil:NilClass:
+  app/views/subs/show.html.erb:2
+  app/controllers/subs_controller.rb:48:in `show'
+
+Started POST "/__better_errors/8e38f3198caf4f8c/variables" for ::1 at 2023-05-11 11:54:29 -0700
+Started GET "/" for ::1 at 2023-05-11 11:54:32 -0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/kennyngo/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/kennyngo/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.2ms | Allocations: 20)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 230)
+
+
+Started GET "/subs/1" for ::1 at 2023-05-11 11:54:34 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.4ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:47:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (Duration: 5.1ms | Allocations: 2591)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 2670)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.4ms | Allocations: 3402)
+
+
+
+NoMethodError - undefined method `title' for nil:NilClass:
+  app/views/subs/show.html.erb:2
+  app/controllers/subs_controller.rb:48:in `show'
+
+Started POST "/__better_errors/7c279c9dbcd03f31/variables" for ::1 at 2023-05-11 11:54:34 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "kennyn"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "kennyn"], ["session_token", "[FILTERED]"], ["password_digest", "[FILTERED]"], ["created_at", "2023-05-11 18:54:52.379642"], ["updated_at", "2023-05-11 18:54:52.379642"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "nitty"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "session_token", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "nitty"], ["session_token", "[FILTERED]"], ["password_digest", "[FILTERED]"], ["created_at", "2023-05-11 18:54:52.634395"], ["updated_at", "2023-05-11 18:54:52.634395"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "kennyn"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "nitty"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSub Create (2.1ms)[0m  [1m[32mINSERT INTO "subs" ("title", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "cats"], ["description", "I love cats!"], ["user_id", 1], ["created_at", "2023-05-11 18:56:14.141180"], ["updated_at", "2023-05-11 18:56:14.141180"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSub Create (0.6ms)[0m  [1m[32mINSERT INTO "subs" ("title", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "guitars"], ["description", "I love guitar!"], ["user_id", 2], ["created_at", "2023-05-11 18:56:14.152925"], ["updated_at", "2023-05-11 18:56:14.152925"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mSub Load (0.9ms)[0m  [1m[34mSELECT "subs".* FROM "subs"[0m
+Started GET "/" for ::1 at 2023-05-11 11:57:00 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/kennyngo/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/kennyngo/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 13.2ms | Allocations: 526)
+Completed 200 OK in 21ms (Views: 16.4ms | ActiveRecord: 0.0ms | Allocations: 2813)
+
+
+Started GET "/subs/1" for ::1 at 2023-05-11 11:57:04 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.5ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:47:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 163)
+  Rendered layout layouts/application.html.erb (Duration: 10.8ms | Allocations: 3719)
+Completed 200 OK in 34ms (Views: 12.7ms | ActiveRecord: 3.9ms | Allocations: 14233)
+
+
+Started GET "/subs/1" for ::1 at 2023-05-11 11:57:40 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.4ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:47:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 132)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 1736)
+Completed 200 OK in 9ms (Views: 5.6ms | ActiveRecord: 0.4ms | Allocations: 3026)
+
+
+Started GET "/subs/1" for ::1 at 2023-05-11 11:58:07 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.3ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:47:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 1734)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.3ms | Allocations: 3025)
+
+
+Started GET "/subs/1" for ::1 at 2023-05-11 11:59:07 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.3ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:47:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 157)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 1757)
+Completed 200 OK in 8ms (Views: 5.1ms | ActiveRecord: 0.3ms | Allocations: 3028)
+
+
+Started GET "/subs/1" for ::1 at 2023-05-11 11:59:17 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.2ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:47:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 155)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 1749)
+Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 0.2ms | Allocations: 3020)
+
+
+Started GET "/subs/1" for ::1 at 2023-05-11 12:00:02 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.2ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:47:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (Duration: 6.9ms | Allocations: 4030)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | Allocations: 4127)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.2ms | Allocations: 5387)
+
+
+
+NoMethodError - undefined method `username' for 1:Integer:
+  app/views/subs/show.html.erb:11
+  app/controllers/subs_controller.rb:48:in `show'
+
+Started POST "/__better_errors/739e561fb87efea3/variables" for ::1 at 2023-05-11 12:00:02 -0700
+Started GET "/subs/1" for ::1 at 2023-05-11 12:00:33 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.3ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:47:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/subs/show.html.erb:11
+  Rendered subs/show.html.erb within layouts/application (Duration: 13.5ms | Allocations: 6204)
+  Rendered layout layouts/application.html.erb (Duration: 18.2ms | Allocations: 7825)
+Completed 200 OK in 23ms (Views: 17.3ms | ActiveRecord: 3.1ms | Allocations: 9128)
+
+
+Started GET "/subs/1" for ::1 at 2023-05-11 12:00:43 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.2ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:47:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/subs/show.html.erb:11
+  Rendered subs/show.html.erb within layouts/application (Duration: 2.1ms | Allocations: 798)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 2393)
+Completed 200 OK in 9ms (Views: 6.7ms | ActiveRecord: 0.4ms | Allocations: 3600)
+
+
+Started GET "/subs/2" for ::1 at 2023-05-11 12:00:53 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSub Load (0.1ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:47:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/subs/show.html.erb:11
+  Rendered subs/show.html.erb within layouts/application (Duration: 1.7ms | Allocations: 538)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 1763)
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 0.5ms | Allocations: 2485)
+
+
+Started GET "/subs/1" for ::1 at 2023-05-11 12:00:59 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.3ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:47:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/subs/show.html.erb:11
+  Rendered subs/show.html.erb within layouts/application (Duration: 1.8ms | Allocations: 538)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 1734)
+Completed 200 OK in 6ms (Views: 3.7ms | ActiveRecord: 0.6ms | Allocations: 2434)
+
+
+Started GET "/subs/1" for ::1 at 2023-05-11 12:01:38 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.2ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:47:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering subs/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/subs/show.html.erb:1
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/subs/show.html.erb:11
+  Rendered subs/show.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1285)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 2862)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.4ms | Allocations: 4042)
+
+

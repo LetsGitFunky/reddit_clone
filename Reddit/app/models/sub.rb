@@ -14,6 +14,6 @@ class Sub < ApplicationRecord
 
   belongs_to :moderator,
     foreign_key: :user_id,
-    class_name: :user,
+    class_name: :User,
     inverse_of: :subs
 end

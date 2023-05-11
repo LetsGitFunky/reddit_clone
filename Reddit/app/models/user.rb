@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
     has_many :subs,
         foreign_key: :user_id,
-        class_name: :subs,
+        class_name: :Sub,
         dependent: :destroy,
         inverse_of: :moderator
 
